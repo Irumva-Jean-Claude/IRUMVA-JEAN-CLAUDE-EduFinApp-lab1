@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import Testing
+from core.models import Testing, Transaction
+
 admin.site.register(Testing)
-# Register your models here.
+admin.site.register(Transaction)
