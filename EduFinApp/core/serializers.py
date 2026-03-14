@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.models import Testing, Transaction, Category
+from core.models import Testing, Transaction, Category, Budget
 
 
 class TestingSerializer(serializers.ModelSerializer):
@@ -26,3 +26,10 @@ class CategorySerializer(serializers.ModelSerializer):
         if Category.objects.filter(name__iexact=value).exists():
             raise serializers.ValidationError("A category with this name already exists.")
         return value
+
+
+class BudgetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Budget
+        fields = ['id', 'user', 'name', 'limit_amount', 'month', 'created_at']
+        read_only_fields = ['id', 'user', 'created_at']
